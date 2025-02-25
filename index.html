@@ -3,9 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/style.css" />
     <title>Chess Player Finder</title>
   </head>
   <body>
+    <header class="main-header">
+      <h1>SEARCH UP FOR A PLAYER</h1>
+    </header>
+
+    <div class="container">
+      <img
+        alt="image not found"
+        width="250"
+        height="250"
+        id="playerImage"
+        src="IMG/silueta.jpg"
+      />
+      <p>ID:<strong id="playerId"></strong></p>
+      <p>NAME: <strong id="playerName"></strong></p>
+      <p>FOLLOWERS: <strong id="playerFollowers"></strong></p>
+    </div>
+
+    <input type="text" id="nameInputPlayer" placeholder="Type player'name" />
     <button id="searchPLayer">Search</button>
   </body>
+  <script src="./JS/main.js"></script>
 </html>
