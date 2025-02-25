@@ -1,0 +1,32 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #2a2a2a;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  margin-top: 24px;
+  font-size: 42px;
+}
+
+.container {
+  margin: auto;
+  width: 40%;
+  height: 350px;
+  border: solid 1px white;
+}
+img {
+  padding-left: 120px;
+}
+
+p,
+strong {
+  text-align: center;
+  padding: 5px;
+  color: white;
+}
