@@ -1,37 +1,54 @@
-let urlPlayer = "https://api.chess.com/pub/player/hikaru";
 const buttonSearch = document.getElementById("searchPLayer");
 const playerImage = document.getElementById("playerImage");
 const playerId = document.getElementById("playerId");
 const playerName = document.getElementById("playerName");
 const playerFollowers = document.getElementById("playerFollowers");
 
-buttonSearch.addEventListener("click", () => {
-  getUrlPlayer();
+buttonSearch.addEventListener("click", async () => {
+  const playerData = await getUrlPlayer();
+  insertDataOnScreen(playerData);
 });
 
 function getUserName() {
-  const userName = document.getElementById("nameInputPlayer").value;
-  return userName;
+  return document.getElementById("nameInputPlayer").value.trim();
 }
 
 async function getUrlPlayer() {
   const userName = getUserName();
+  if (!userName) {
+    alert("Por favor, ingresa un nombre de usuario.");
+    return null;
+  }
 
   try {
-    const urlPLayer = "https://api.chess.com/pub/player/" + userName;
-    await fetch(urlPLayer)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.avatar) {
-          playerImage.src = data.avatar;
-        } else {
-          playerImage.src = data.avatar;
-        }
-        playerId.innerText = data.player_id;
-        playerName.innerText = data.name;
-        playerFollowers.innerText = data.followers;
-      });
+    const urlPlayer = `https://api.chess.com/pub/player/${userName}`;
+    const response = await fetch(urlPlayer);
+    const data = await response.json();
+
+    if (data.code === 404) {
+      alert("Usuario no encontrado");
+      return null;
+    }
+
+    playerImage.src = data.avatar ? data.avatar : "IMG/silueta.jpg";
+    return {
+      id: data.player_id || "NO ID FOUND",
+      name: data.name || "NO NAME FOUND",
+      followers: data.followers || 0,
+    };
   } catch (error) {
-    alert("need to get a solution when this error");
+    console.error("Error al obtener los datos del jugador:", error);
+    alert("Hubo un error al obtener los datos.");
+    return null;
+  }
+}
+
+function insertDataOnScreen(playerInformation) {
+  if (playerInformation) {
+    playerId.innerText = `${playerInformation.id}`;
+    playerName.innerText = `${playerInformation.name}`;
+    playerFollowers.innerText = `${playerInformation.followers}`;
+  } else {
+    console.log("No se pudo obtener la información.");
   }
 }

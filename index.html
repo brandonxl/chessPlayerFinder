@@ -7,25 +7,23 @@
     <title>Chess Player Finder</title>
   </head>
   <body>
-    <header class="main-header">
-      <h1>SEARCH UP FOR A PLAYER</h1>
-    </header>
+    <h1>SEARCH FOR A PLAYER</h1>
 
     <div class="container">
-      <img
-        alt="image not found"
-        width="250"
-        height="250"
-        id="playerImage"
-        src="IMG/silueta.jpg"
-      />
-      <p>ID:<strong id="playerId"></strong></p>
+      <img alt="image not found" id="playerImage" src="IMG/silueta.jpg" />
+      <p>ID: <strong id="playerId"></strong></p>
       <p>NAME: <strong id="playerName"></strong></p>
       <p>FOLLOWERS: <strong id="playerFollowers"></strong></p>
     </div>
 
-    <input type="text" id="nameInputPlayer" placeholder="Type player'name" />
-    <button id="searchPLayer">Search</button>
+    <div class="input-container">
+      <input
+        type="text"
+        id="nameInputPlayer"
+        placeholder="Type player's name"
+      />
+      <button id="searchPLayer">Search</button>
+    </div>
   </body>
   <script src="./JS/main.js"></script>
 </html>
