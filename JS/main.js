@@ -26,7 +26,7 @@ async function getUrlPlayer() {
     const data = await response.json();
 
     if (data.code === 404) {
-      alert("Usuario no encontrado");
+      alert("USER NOT FOUND");
       return null;
     }
 
@@ -37,8 +37,7 @@ async function getUrlPlayer() {
       followers: data.followers || 0,
     };
   } catch (error) {
-    console.error("Error al obtener los datos del jugador:", error);
-    alert("Hubo un error al obtener los datos.");
+    alert("Error when fetching the player data.");
     return null;
   }
 }
@@ -48,7 +47,5 @@ function insertDataOnScreen(playerInformation) {
     playerId.innerText = `${playerInformation.id}`;
     playerName.innerText = `${playerInformation.name}`;
     playerFollowers.innerText = `${playerInformation.followers}`;
-  } else {
-    console.log("No se pudo obtener la información.");
   }
 }
